@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	//数组迭代
+	var numbers = [1,2,3,4,5,6,7,8,9];
+	
+	//every 返回值为boolean 全部符合为ture
+	var status1 = numbers.every(item=> item%2==0)
+	console.log(status1);
+	
+	//some   返回值为Boolean  只要有符合的就返回ture
+	var status2 = numbers.some(item=> item%2==0)
+	console.log(status2);
+	
+	//filter 过滤数组，返回符合条件的集合
+	var arr = numbers.filter(item=> item>5);
+	console.log(arr);
+	
+	//数组求和  reduce
+	var sum = numbers.reduce((pre,cur,index)=> pre+cur)
+	console.log(sum);
+	
+	//map 返回是否符合条件的状态
+	var newMap = numbers.map(item=> item%2==0);
+	console.log(newMap);
+	
+</script>

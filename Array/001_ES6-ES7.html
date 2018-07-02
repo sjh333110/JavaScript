@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	//let  块级作用域
+	let name = "song";
+	let name1 = "my";
+	console.log(name,name1);
+	
+	//模板字面量
+	var book = {
+		name:'学习JavaScript数据结构与算法'
+	};
+	console.log(`你正在阅读${book.name}.
+	这是一行.
+	这也是.`);
+	
+	//箭头函数
+	var circleArea = function circleArea (r){
+		var PI = 3.14;
+		var area = PI*r*r;
+		return area;
+	}
+	console.log(circleArea(2));
+	
+	let circleArea2 = (r)=>3.14*r*r;
+	console.log(circleArea2(2));
+	
+	
+	function sum (x=1,y=2,z=3){
+		return x+y+z;
+	}
+	console.log(sum(4,1));
+	
+	var params = [3,4,5];
+	console.log(sum(...params));
+	console.log(sum.apply('',params));
+	
+	function restParamsFunction (x,y, ...a) {
+		return (x+y)*a.length;
+	}
+	console.log(restParamsFunction(1,2,"hello",true,7,0));
+	
+	//数组结构
+	var [x,y] = ['a','b'];
+	[x,y] = [y,x];
+	console.log(x,y);
+	
+	var obj = {x,y};
+	console.log(obj)
+	
+	//类进行面向对象编程
+	class Book{
+		constructor(title,pages,isban){
+			this.title = title;
+			this.pages = pages;
+			this.isban = isban;
+		};
+		printIsban (){
+			console.log(this.isban);
+		}
+	}
+	let book1 = new Book("标题",40,"北京");
+	console.log(book1.title);
+	book1.title = 'new title';
+	console.log(book1.title)
+</script>

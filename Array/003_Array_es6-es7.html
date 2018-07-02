@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+	let numbers = [1,2,3,4,5,6,7,8,9];
+	
+	//forEach 遍历元素
+	numbers.forEach(x=> console.log(x));
+	
+	//for...of 循环遍历
+	for(let n of numbers){
+		console.log((n%2==0)?'even':'odd');
+	}
+	
+	//ES6新增迭代器 iterator
+	let iterator = numbers[Symbol.iterator]();
+	for (let i=0;i<numbers.length;i++) {
+		console.log(iterator.next().value);
+	}
+	
+	//ES6新增迭代器 entries
+	let entries = numbers.entries();
+	for (let j=0;j<numbers.length;j++) {
+		console.log(entries.next().value)
+	};
+	
+	//ES6新增迭代器 keys
+	let keys = numbers.keys();
+	for (let k=0;k<numbers.length;k++) {
+		console.log(keys.next().value);
+	}
+	
+	//数组赋值Array.from
+	let number2 = Array.from(numbers);
+	console.log(number2)
+	
+	//Array.of
+	let number3 = Array.of(1);
+	let number4 = Array.of(1,2,3,4,5);
+	console.log(number3,number4);
+	
+	let numbersCopy = Array.of(...number4);
+	console.log(numbersCopy);
+	
+	
+	//fill
+	let fillArr = Array.of(1,2,3,4,5,6);
+	let newFillArr = fillArr.fill(0);
+	console.log(newFillArr);
+	
+	let indexFillArr = fillArr.fill(2,1);
+	console.log(indexFillArr);
+	
+	//copyWithin
+	let copyArray = [1,2,3,4,5,6];
+	//copyArray.copyWithin(0,3);
+	copyArray.copyWithin(1,3,5);
+	console.log(copyArray);
+</script>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script src="000_Stack.js"></script>
+<script type="text/javascript">
+	function isBalance(str){
+		var str = str.toString();
+		var myArray = new Array();
+		for(var i=0;i<str.length;i++){
+			if(str[i] == '[' || str[i] == '【' || str[i] == '{' || str[i] == '('){
+				myArray.push(str[i]);
+			}
+			if(str[i] == ']' || str[i] == '】' || str[i] == '}' || str[i] == ')'){
+				if(myArray.length == 0){
+					console.log("括号不平衡");
+					return fasle;
+				}	
+			}
+		}
+	}
+	
+
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	let numbers = Array.of(0,1,2,3,4,5,6,7,8,9);
+	
+	let reverseArr = numbers.reverse();
+	console.log(reverseArr);
+	
+	let sortArr = reverseArr.sort();
+	console.log(sortArr);
+	
+	//自定义排序
+	var persons =[
+		{"name":'song',"age":26},
+		{"name":'my',"age":21},
+		{"name":'sy',"age":35},
+		
+	];
+	
+	function propertypeSort (a,b) {
+		if(a.age>b.age){
+			return -1;
+		}else if(a.age<b.age){
+			return 1;
+		}else{
+			return 0;
+		}
+		
+	}
+	console.log(persons.sort(propertypeSort))
+	
+	let numbers1 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+	function multipleOf13(element,index,array){
+		return (element%13 == 0)? true:false;
+	}
+	console.log(numbers1.find(multipleOf13));
+	console.log(numbers1.findIndex(multipleOf13))
+	console.log(numbers1.includes(15));
+	console.log(numbers1.includes(20))
+	console.log(numbers1);
+	console.log(numbers1.toString())
+</script>
