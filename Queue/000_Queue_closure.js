@@ -1,7 +1,7 @@
 let Queue = (function () {
 	const items = new WeakMap();
 	class Queue {
-		constructor () {
+		constructor() {
 			items.set(this, []);
 		};
 		isEmpty() {
@@ -26,7 +26,7 @@ let Queue = (function () {
 			let r = q.toString();
 			return r;
 		};
-		
+
 	}
 	return Queue;
 })();
