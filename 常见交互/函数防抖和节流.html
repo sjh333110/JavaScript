@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #content{
+            display: flex;
+            justify-content: space-around
+        }
+        #box1 {
+            height: 400px;
+            width: 400px;
+            line-height: 400px;
+            text-align: center;
+            border: 1px solid #cccccc;
+        }
+        #box2 {
+            height: 400px;
+            width: 400px;
+            line-height: 400px;
+            text-align: center;
+            border: 1px solid #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="box1">
+            常规模式
+            <span id="num1"></span>
+        </div>
+        <div id="box2">
+            防抖/节流模式
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    var box1 = document.getElementById("box1");
+    var span1 = document.getElementById("num1");
+    var number = 0;
+    function timeCount () {
+        number++;
+        console.log(number);
+        span1.innerText = number;
+    }
+    //box1.onmousemove = debounce(timeCount, 5000, 1);
+    //函数防抖绿色版-----连续动作触发停止后执行
+    function debounce (dosomething, wait) {
+        var timeout;
+        return function () {
+            var _this = this,
+                _argument = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout (function () {
+                dosomething.apply(_this, _argument);
+            },wait) 
+        }
+    }
+    //函数防抖-----立即执行
+    function debounce (dosomething, wait, isImmdiate) {
+        var timeout;
+        return function () {
+            var _this = this,
+                _argument = arguments;
+            clearTimeout(timeout);
+            if (isImmdiate) {
+                var isTrigger = !timeout;
+                timeout = setTimeout(function () {
+                    timeout = null;
+                    console.log('null')
+                },wait);
+                isTrigger &&　dosomething.apply(_this, arguments);
+            } else {
+                timeout = setTimeout(function () {
+                    dosomething.apply(_this, arguments);
+                },wait);
+            }
+        };
+    }
+    // 函数节流------初级版
+    function throttle (dosomething, wait) {
+        var _this,
+            _arguments ,
+            initTime = 0;
+        return function () {
+            console.log(initTime);
+            var nowTime = +new Date();
+            _this = this;
+            _arguments = arguments;
+               
+            if (nowTime - initTime > wait) {
+                dosomething.apply(_this,_arguments);
+                initTime = nowTime;
+            }
+        }
+    }
+    // 函数节流------定时器版
+    function throttle (dosomething, wait){
+        var timeout;
+        return function () {
+            var _this = this,
+                _argument = arguments;
+            if (!timeout) {
+                timeout = setTimeout(()=>{
+                    timeout = null;
+                    dosomething.apply(_this, arguments);
+                },wait)
+            }
+        }
+    }
+    box1.onmousemove = throttle(timeCount, 5000);
+
+    // 加强版
+    //节流之双剑合璧版
+    function throttle(doSomething, wait) {
+        var timeout, _this, _arguments,
+            previous = 0;
+
+        var later = function() {
+            previous = +new Date();
+            timeout = null;
+            doSomething.apply(_this, _arguments)
+        };
+        var throttled = function() {
+            var now = +new Date();
+            //下次触发 doSomething 剩余的时间
+            var remaining = wait - (now - previous),
+                _this = this;
+                _arguments = arguments;
+            // 如果没有剩余的时间了
+            if (remaining <= 0) {
+                if (timeout) {
+                    clearTimeout(timeout);
+                    timeout = null;
+                }
+                previous = now;
+                doSomething.apply(_this, _arguments);
+            } else if (!timeout) {
+                timeout = setTimeout(later, remaining);
+            }
+        };
+        return throttled;
+    }
+
+</script>
