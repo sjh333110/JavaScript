@@ -103,6 +103,5 @@ class LinkedList {
         this.print = function () {
             console.log(this.toString());
         };
-
     }
 }
