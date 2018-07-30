@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="Set.JS"></script>
+<script>
+    let setA = new Set();
+    setA.add(1);
+    setA.add(2);
+    setA.add(3);
+
+    let setB = new Set();
+    setB.add(3);
+    setB.add(4);
+    setB.add(5);
+    setB.add(6);
+
+    let unionAB = setA.union(setB);
+    console.log(unionAB.values());
+
+    let intersectionSet = setA.intersection(setB);
+    console.log(intersectionSet.values());
+
+    let differenceSet = setA.difference(setB);
+    console.log(differenceSet.values());
+</script>

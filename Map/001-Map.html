@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script src="Map.js"></script>
+<script>
+    var dictionary = new Dictionary();
+    dictionary.set('Gandalf','gandalf@email.com');
+    dictionary.set('John','john@email.com');
+    dictionary.set('Tyrion','tyrion@email.com');
+
+    console.log(dictionary.has('Gandalf'));
+    // console.log(dictionary.size());
+    console.log(dictionary.keys());
+    console.log(dictionary.values());
+    console.log(dictionary.get('Tyrion'));
+</script>
